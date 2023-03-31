@@ -44,6 +44,7 @@ class Directory extends React.Component{
     }
 
     render(){
+      
 //const {id,title,imageUrl,linkUrl,size}=this.state.sections;
       return  <div className="directory">{/*home page contains directory*/}
        {this.state.sections.map(({id,title,imageUrl,linkUrl,size})=>(
