@@ -47,8 +47,8 @@ class Directory extends React.Component{
       
 //const {id,title,imageUrl,linkUrl,size}=this.state.sections;
       return  <div className="directory">{/*home page contains directory*/}
-       {this.state.sections.map(({id,title,imageUrl,linkUrl,size})=>(
-        <MenuItem key={id} title={title} imageUrl={imageUrl} linkUrl={linkUrl} size={size} />
+       {this.state.sections.map(({id,...otherSectionProps})=>(
+        <MenuItem key={id} {...otherSectionProps} />
        ))}
        
     </div>
