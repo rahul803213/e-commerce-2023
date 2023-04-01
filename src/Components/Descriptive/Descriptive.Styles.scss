@@ -1,0 +1,17 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+.description{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    border: 1px solid grey;
+    
+}
+.left-child{
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+}
+.left-child > img{
+    width: 100%;
+    height: auto;
+}

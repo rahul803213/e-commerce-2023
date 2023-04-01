@@ -1,0 +1,26 @@
+.collection-menu{
+    display:flex;
+    width:20%;
+    height:50vh;
+    flex:1 1 auto;
+    flex-flow: row wrap;
+    margin:0 20px;
+    &:first-child{
+        margin-left: 0;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+}
+.image{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.collection-menu-footer{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}
