@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate} from "react-router-dom";
 import './menu-item.styles.scss';
 const MenuItem = (props) =>{
-    console.log(props);
+    //console.log(props);
     //console.log(useMatch())
     const navigate=useNavigate();
   

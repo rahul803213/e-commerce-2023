@@ -4,3 +4,8 @@
     //border: 1px solid rgb(9, 9, 237);
     margin-right: 80px;
 }
+.sign-in-buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-flow:column wrap;
+}
