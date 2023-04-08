@@ -9,9 +9,9 @@ return(
     <div className="collection-preview">
    <h2 className="collection-preview-title">{title}</h2>
    <div className="collection-preview-card-group">
-  {items.filter((item,idx)=>idx<4).map(({id,...otherItemProps})=>(
+  {items.filter((item,idx)=>idx<4).map((item)=>(
     
-   <CollectionMenu key={id} {...otherItemProps} />
+   <CollectionMenu key={item.id} item={item} />
     
     ))}
     </div>

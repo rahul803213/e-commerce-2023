@@ -34,7 +34,7 @@ const navigate=useNavigate();
         </Link>
       )}
       <CartIcon />
-      {hidden ? null :
+      {hidden ? null : 
       <CartDropdown />}
     </div>
   

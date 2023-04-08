@@ -17,8 +17,8 @@ const {collections}=this.state;
 return(
     <div className="shop-page">
         <h1>Collections</h1>
-    { collections.map(({id,...otherCollectionProps})=>(
-        <CollectionPreview key={id} {...otherCollectionProps}/>
+    { collections.map(({id,...collection})=>(
+        <CollectionPreview key={id} {...collection} />
     ))}
     </div>
 )
