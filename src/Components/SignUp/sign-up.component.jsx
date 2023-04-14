@@ -5,6 +5,7 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { createUserProfileDocument } from "../../firebase/firebase.utils";
 import { auth } from "../../firebase/firebase.utils";
+import firebase from "../../firebase/firebase.utils";
 
 class SignUp extends React.Component{
     constructor(props){
@@ -14,9 +15,49 @@ class SignUp extends React.Component{
             email:"",
             password:"",
             displayName:"",
-            confirm_password:""
+            confirm_password:"",
+            show:false,
+            phone_number:"",
+            final:"",
+            otp:""
+
         }
     }
+
+     ValidateOTP =  (event) => {
+       // event.preventDefault();
+        const {final,otp} =this.state;
+		if (otp === null || final === null)
+			return;
+		final.confirm(otp).then((result) => {
+			alert(result);
+		}).catch((err) => {
+			alert("Wrong code");
+		})
+	}
+
+sendOTP =  (event) =>{
+   // event.preventDefault();
+   console.log({hi:"hi"})
+
+    const {phone_number,show} = this.state;
+    console.log(phone_number);
+    if (phone_number === "" || phone_number.length < 10) 
+    {alert("Invalid Phone Number"); 
+    this.setState({phone_number:""});return;};
+
+		let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+		auth.signInWithPhoneNumber(phone_number, verify).then((result) => {
+			this.setState({final:result});
+			alert("code sent")
+			this.setState({show:true});
+		})
+			.catch((err) => {
+				alert(err);
+				window.location.reload()
+			});
+}
+
 
 handelSubmit = async event =>{
     event.preventDefault();
@@ -25,6 +66,7 @@ handelSubmit = async event =>{
         alert("Password and Confirm Password are not same");
         return;
     }
+   
     try{
         const {user} = await auth.createUserWithEmailAndPassword(email,password);
         
@@ -51,10 +93,15 @@ handelSubmit = async event =>{
         this.setState({[name]:value});
     }
 render(){
+    const {show} =this.state;
     return(
         <div className="sign-up">
-            <h2>I HAVE NOT AN ACCOUNT</h2> 
-            <span>Sign Up With Email And Password</span> 
+            <div>
+                <h2>DON'T HAVE  AN ACCOUNT</h2> 
+            </div>
+            <div>
+                <span>Sign Up With Email And Password</span> 
+            </div>
         <form onSubmit={this.handelSubmit}>
 
         <FormInput 
@@ -83,7 +130,7 @@ render(){
             required
             />
 
-<FormInput 
+          <FormInput 
             type="password"
             name="confirm_password"
             value={this.state.confirm_password}
@@ -91,9 +138,43 @@ render(){
             label="confirm password"
             required
             />
-<CustomButton type="submit">Sign up</CustomButton>
-            </form>
+
+          
+
+        <div style={{width:'70%', margin:'0 auto'}}>
+            <CustomButton type="submit">Sign up</CustomButton>
         </div>
+    </form>
+   
+        
+
+       { !show ? 
+        <div> <FormInput 
+            type="number "
+            name="phone_number"
+            value={this.state.phone_number}
+            handelchange={this.handleChange}
+            label="phone number"
+            required
+            />
+            <div id="recaptcha-container"></div>
+            <CustomButton onClick={this.sendOTP} >Send OTP</CustomButton>
+            </div>
+           
+        : <div> 
+          <FormInput 
+            type="number "
+            name="otp"
+            value={this.state.otp}
+            handelchange={this.handleChange}
+            label="OTP"
+            required
+            />
+            <CustomButton onClick={this.ValidateOTP} >validate OTP</CustomButton>
+            </div> }
+
+
+    </div>
     );
 }
 

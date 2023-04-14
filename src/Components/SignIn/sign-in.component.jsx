@@ -1,5 +1,7 @@
 import React from "react";
 import './sign-in.styles.scss';
+import {FcGoogle} from 'react-icons/fc'
+import {FaFacebook} from 'react-icons/fa'
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -28,6 +30,14 @@ handleSubmit = async event => {
     }
     catch(error){
         console.log(error);
+        this.setState({
+            email:"",
+            password:""
+        })
+        alert("Email Or Password is Incorrect");
+       
+        //return ;
+
     }
 
     
@@ -39,12 +49,13 @@ handlechange = event =>{
 }
 
 
+
     render(){
       //  console.log(this.state);
         return(
             <div className="sign-in">
-                <h2>I HAVE ALREADY AN ACCOUNT</h2>
-                <span>Sign In With Your Email And Password</span>
+                <div><h2> ALREADY HAVE AN ACCOUNT</h2></div>
+                <div><span>Sign In With Your Email And Password</span></div>
                 <form onSubmit={this.handleSubmit}>
                     <FormInput 
                     type="email" 
@@ -62,11 +73,25 @@ handlechange = event =>{
                     label="password"
                     required />
                     
+                    {/* <FontAwesomeIcon icon={faGoogleLogo} shake size="sm" style={{color: "#fafaf9",}} /> */}
                   <div className="sign-in-buttons">
-                    <CustomButton type="submit">sign in </CustomButton>
-                    <CustomButton onClick={signInWithGoogle}  isGoogleSignIn>sign in with google</CustomButton>
-                    <CustomButton onClick={signInWithFacebook} > sign in with facebook</CustomButton>
+                    <div style={{width:'70%',margin:'0 auto'}}>
+                        <CustomButton type="submit">sign in </CustomButton>
                     </div>
+                    
+                    {/* <CustomButton onClick={signInWithGoogle}  isGoogleSignIn> <FcGoogle/> <span>sign in with google</span> </CustomButton>
+                    <CustomButton onClick={signInWithFacebook} > sign in with facebook</CustomButton> */}
+
+                 {/*    <CustomButton > */}
+                    <div style={{display:'flex',alignItems:'center',columnGap:'2%',justifyContent:'center',marginTop:'20px',fontWeight:'500',fontSize:'20px'}}>
+                        <span>Sign In with </span>
+                        <FcGoogle onClick={signInWithGoogle} style={{fontSize:'24px',cursor:'pointer'}}/> 
+                        <FaFacebook onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                    </div>
+                 {/*    </CustomButton> */}
+
+                    
+                </div>
 
                 </form>
             </div>

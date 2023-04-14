@@ -1,18 +1,28 @@
 import './App.css';
 import React from 'react';
+// import {} from 'react-icons/fa'
+// import {FcGoogle} from 'react-icons/fc'
 import { Route , Routes ,Navigate } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/HomePage/HomePage.component';
 import ShopPage from './pages/shop-page/shop-page.component';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/sign-in-and-signup.component';
+
+
+import WishlistPage from './pages/wishlist-page/wishlistPage.component';
+
 import Header from './Components/header/header.component';
-import DescriptivePage from './Components/Descriptive/Descriptive.component';
+import DescribePage from './Components/item-descriptivePage/describeItem.component';
 import { connect } from 'react-redux';
 import CheckOutPage from './pages/chekout-page/chekout-page.component';
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
+import { addCollectionAndDocumentInFirestore } from './firebase/firebase.utils';
+import DescriptionPage from './pages/Description-Page/description.component';
+
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCollections } from './redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
 
 
@@ -24,7 +34,7 @@ class App extends React.Component {
 componentDidMount(){
   
 this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
-  const {setCurrentUser} = this.props;
+  const {setCurrentUser,collectionArray} = this.props;
   //this.setState({CurrentUser:userAuth});
   if(userAuth){
   
@@ -48,6 +58,7 @@ this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
 
              else{
   setCurrentUser(userAuth);
+ // addCollectionAndDocumentInFirestore('collections',collectionArray.map(({title,items})=>({title,items})));
 }
 
 })
@@ -66,12 +77,14 @@ componentWillUnmount(){
         <Header />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/shop" element={<ShopPage />} />
+        <Route exact path="/shop/*" element={<ShopPage />} />
         <Route exact path="/checkout" element={<CheckOutPage />} />
         
         <Route exact path='/signin' element = {this.props.currentUser ? <Navigate to="/" /> :<SignInAndSignUpPage />} />
       
-        <Route exact path="/description" element={<DescriptivePage/>}/>
+        <Route exact path="/description" element={<DescriptionPage/>}/>
+        <Route exact path="/wishlist" element={<WishlistPage />}/>
+        
   </Routes>
         
       </div>
@@ -81,7 +94,8 @@ componentWillUnmount(){
 }
 const mapStateToProps =  createStructuredSelector({
   
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  collectionArray: selectCollections
 });
 
 const mapDispatchToProps = dispatch =>({

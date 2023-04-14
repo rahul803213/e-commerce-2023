@@ -5,14 +5,18 @@
   //  align-items: center;
     align-content: flex-start;
     flex:1 1 auto;
-
+h2{
+  &:hover{
+    cursor: pointer;
+  }
+}
    
 }
 .collection-preview-card-group{
     width: 100%;
     display:flex;
     flex:1 1 auto;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
-    margin-bottom: 40px;;
+    margin-bottom: 40px;
 }

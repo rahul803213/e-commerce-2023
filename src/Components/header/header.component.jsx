@@ -4,15 +4,18 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { createStructuredSelector } from "reselect";
 import { selectCarthidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectWishlistItems } from "../../redux/wishlist/wishlist.selector";
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import CartIcon from "../cart-icon/cart-icon.component";
+import Heart from "../../assets/image/images.png";
+import RedHeart from "../../assets/image/wishlist.png"
 
 import './header.styles.scss';
 
-const Header =({currentUser,hidden})=>{
-   // console.log(CurrentUser);
+const Header =({currentUser,hidden,wishlistitems})=>{
+   console.log();
 //const navigate=useNavigate();
     return(
         <div className='header'>
@@ -20,6 +23,17 @@ const Header =({currentUser,hidden})=>{
       <Logo className='logo' />
     </Link>
     <div className='options'>
+    <Link to='/wishlist'>
+{
+  wishlistitems.length ?  <img src={RedHeart} alt="wishlist" className=" wishlist-image"  />
+  : <img src={Heart} alt="wishlist" className=" wishlist-image"  />
+
+}
+
+
+   
+    </Link>
+   
       <Link className='option' to='/shop'>
         SHOP
       </Link>
@@ -53,7 +67,8 @@ const Header =({currentUser,hidden})=>{
 
 const mapStateToProps =createStructuredSelector({
    currentUser:selectCurrentUser,
-   hidden:selectCarthidden
+   hidden:selectCarthidden,
+   wishlistitems:selectWishlistItems
 })
 
 export default connect(mapStateToProps)(Header);

@@ -21,9 +21,22 @@ export const firestore =firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const provider_f = new firebase.auth.FacebookAuthProvider();
-//const provider_recaptch=new firebase.auth.RecaptchaVerifier();
-//const prover_phone_number= new firebase.auth.signInWithPhoneNumber;
+/* const provider_recaptcha=new firebase.auth.RecaptchaVerifier();
+const provider_phone_number= new firebase.auth.signInWithPhoneNumber(); */
 //window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+
+
+//This is for updation in the database of the state we are doing here
+export const addCollectionAndDocumentInFirestore = async (collectionKey,objectsToAdd) =>{
+ const collectionRef = firestore.collection(collectionKey);
+ const batch = firestore.batch();
+ objectsToAdd.forEach(obj => {
+  const newDocRef = collectionRef.doc();
+  batch.set(newDocRef,obj);
+ })
+
+ return await batch.commit();
+}
 
 export const createUserProfileDocument = async (userAuth ,additionalData) =>{ 
 if(!userAuth) return;
