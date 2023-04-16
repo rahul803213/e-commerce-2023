@@ -9,15 +9,14 @@ import { add_item_in_wishlist } from "../../redux/wishlist/wishlist.action";
 import { createStructuredSelector } from "reselect";
 import { selectWishlistItems } from "../../redux/wishlist/wishlist.selector";
 import { clear_item_from_wishlist } from "../../redux/wishlist/wishlist.action";
-import {DescribePage} from '../item-descriptivePage/describeItem.component';
-import { useLocation } from "react-router";
+//import { useLocation } from "react-router";
 
 import { useNavigate } from "react-router";
 const CollectionMenu=({item,related,addItems,add_item_in_wishlist,wishlistitems,clear_item_from_wishlist,title})=>{
   const navigate =useNavigate();
-  const location=useLocation();
-  console.log(location);
-  console.log({"title at collection menu":title});
+ // const location=useLocation();
+ // console.log(location);
+ // console.log({"title at collection menu":title});
   const {imageUrl,name,price} = item;
 const isItemalreadyinWishList = wishlistitems.find(a=>a.id===item.id);
     return(

@@ -13,12 +13,11 @@ import SignInAndSignUpPage from './pages/SignInAndSignUpPage/sign-in-and-signup.
 import WishlistPage from './pages/wishlist-page/wishlistPage.component';
 
 import Header from './Components/header/header.component';
-import DescribePage from './Components/item-descriptivePage/describeItem.component';
 import { connect } from 'react-redux';
 import CheckOutPage from './pages/chekout-page/chekout-page.component';
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
-import { addCollectionAndDocumentInFirestore } from './firebase/firebase.utils';
-import DescriptionPage from './pages/Description-Page/description.component';
+import { PushCartItemsInDB } from './firebase/firebase.user';
+//import DescriptionPage from './pages/Description-Page/description.component';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -27,39 +26,57 @@ import { createStructuredSelector } from 'reselect';
 
 
 class App extends React.Component {
- 
+//step 8: carrying from firebase.utils.js 
+//In this step we declare a variable unsubscribeFromAuth and initilaize with null as no user at first.
   unsubscribeFromAuth=null;
 
 
 componentDidMount(){
-  
+
+
+
+
+
+
+
+
+
+
+  //step 9: this step is very important as when we load our site
+  //then we make our auth library to check is authentication changed or not
+  //if so then we will save the user and process the data
 this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
-  const {setCurrentUser,collectionArray} = this.props;
+ // console.log(userAuth)
+  const {setCurrentUser,currentUser} = this.props;
   //this.setState({CurrentUser:userAuth});
-  if(userAuth){
-  
+
+  if(userAuth){    
+              
                const userRef =await createUserProfileDocument(userAuth);
               // console.log(userRef)
+              //step 11: always looking for changes in userRef and the 
+              //update the state on the base of listening continousay
               userRef.onSnapshot(userRef, (snapShot) => {
             //  console.log(snapShot.data());
-             setCurrentUser({
-                CurrentUser:{
+             setCurrentUser(
+                {
                   id:snapShot.id,
                   ...snapShot.data()
                 }
-              });
+              );
              
                                                 });
 
-              //  console.log(this.state)
-
+              console.log("hi",currentUser)
+             // SetCartItemsIntoStateFromUserAccount(userAuth.uid)
  
              }
 
              else{
   setCurrentUser(userAuth);
  // addCollectionAndDocumentInFirestore('collections',collectionArray.map(({title,items})=>({title,items})));
-}
+}  
+//PushCartItemsInDB(userAuth.uid);
 
 })
   }
@@ -82,7 +99,6 @@ componentWillUnmount(){
         
         <Route exact path='/signin' element = {this.props.currentUser ? <Navigate to="/" /> :<SignInAndSignUpPage />} />
       
-        <Route exact path="/description" element={<DescriptionPage/>}/>
         <Route exact path="/wishlist" element={<WishlistPage />}/>
         
   </Routes>

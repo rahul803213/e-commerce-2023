@@ -1,12 +1,13 @@
 import React from "react";
 import './sign-in.styles.scss';
 import {FcGoogle} from 'react-icons/fc'
-import {FaFacebook} from 'react-icons/fa'
-
+/* import {FaMobile,FaApple, FaLinkedin, FaTwitter, FaYahoo, FaGithub} from 'react-icons/fa'
+ */
+import {FaFacebook} from 'react-icons/fa';
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth } from "../../firebase/firebase.utils";
-import { signInWithGoogle ,signInWithFacebook} from "../../firebase/firebase.utils";
+import { signInWithGoogle ,signInWithFacebook,} from "../../firebase/firebase.utils";
 //import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 class SignIn extends  React.Component{
@@ -29,7 +30,7 @@ handleSubmit = async event => {
 
     }
     catch(error){
-        console.log(error);
+      //  console.log(error);
         this.setState({
             email:"",
             password:""
@@ -86,7 +87,15 @@ handlechange = event =>{
                     <div style={{display:'flex',alignItems:'center',columnGap:'2%',justifyContent:'center',marginTop:'20px',fontWeight:'500',fontSize:'20px'}}>
                         <span>Sign In with </span>
                         <FcGoogle onClick={signInWithGoogle} style={{fontSize:'24px',cursor:'pointer'}}/> 
-                        <FaFacebook onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                        <FaFacebook onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/> 
+                       {/*  <FaMobile onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                        <FaApple onClick={signInWithApple} style={{fontSize:'24px',cursor:'pointer'}}/>
+                        <FaLinkedin onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                        <FaTwitter onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                        <FaYahoo onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
+                        <FaGithub onClick={sighInWithGithub} style={{fontSize:'24px',cursor:'pointer'}}/>    */}
+                        
+
                     </div>
                  {/*    </CustomButton> */}
 

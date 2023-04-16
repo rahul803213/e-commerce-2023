@@ -38,10 +38,10 @@ class SignUp extends React.Component{
 
 sendOTP =  (event) =>{
    // event.preventDefault();
-   console.log({hi:"hi"})
+//   console.log({hi:"hi"})
 
-    const {phone_number,show} = this.state;
-    console.log(phone_number);
+    const {phone_number} = this.state;
+   // console.log(phone_number);
     if (phone_number === "" || phone_number.length < 10) 
     {alert("Invalid Phone Number"); 
     this.setState({phone_number:""});return;};
@@ -61,7 +61,7 @@ sendOTP =  (event) =>{
 
 handelSubmit = async event =>{
     event.preventDefault();
-    const {email,password,displayName,confirm_password}=this.state;
+    const {email,password,displayName,confirm_password,phone_number}=this.state;
     if(password !== confirm_password){
         alert("Password and Confirm Password are not same");
         return;
@@ -70,14 +70,16 @@ handelSubmit = async event =>{
     try{
         const {user} = await auth.createUserWithEmailAndPassword(email,password);
         
-        await createUserProfileDocument(user,{displayName});
+        await createUserProfileDocument(user,{displayName,phone_number});
       
 
         this.setState({
             email:"",
             password:"",
             displayName:"",
-            confirm_password:""
+            confirm_password:"",
+            phone_number:"",
+           
         })
 
     }
@@ -138,8 +140,16 @@ render(){
             label="confirm password"
             required
             />
-
-          
+           
+           <FormInput 
+            type="number "
+            name="phone_number"
+            value={this.state.phone_number}
+            handelchange={this.handleChange}
+            label="phone number"
+            
+            />
+    
 
         <div style={{width:'70%', margin:'0 auto'}}>
             <CustomButton type="submit">Sign up</CustomButton>

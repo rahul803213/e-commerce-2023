@@ -15,7 +15,7 @@ import RedHeart from "../../assets/image/wishlist.png"
 import './header.styles.scss';
 
 const Header =({currentUser,hidden,wishlistitems})=>{
-   console.log();
+  // console.log();
 //const navigate=useNavigate();
     return(
         <div className='header'>

@@ -8,24 +8,24 @@
   }
   .image-section{
     position: relative;
-    padding: 10px;
-    width: 30%;
-    height: 100vh;
+    padding: 1rem;
+    width: 40%;
+    height: 80vh;
   }
   .image-section > img{
    max-width: 100%;
   }
   .likeBox{
-    width:40px;
-    height:40px;
+    width:3em;
+    height:3em;
     border-radius:50%;
     background:rgb(218, 211, 211);
     position: absolute;
     display:flex;
     justify-content: center;
     align-items: center;
-    top: 3%;
-    right: 2%;
+    top: 5%;
+    right: 10%;
   }
   
   .description-section{

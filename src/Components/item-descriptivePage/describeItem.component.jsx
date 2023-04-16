@@ -14,11 +14,11 @@ import RelatedProduct from '../related-product/related-product.component'
 const DescribePage = (props) => {
  const navigate = useNavigate();
 const param=useParams();
-  console.log({hi:param});
+  //console.log({hi:param});
   const items = useSelector((state)=>
-  state.shop.collections.find(collection=>collection.title.toLowerCase()===param.param1)
+  state.shop.collections.find(collection=>collection.title.toLowerCase()==param.param1)
   .items.filter(a=>a.id==param.param2));
-console.log("ITEM",items);
+//console.log("ITEM",items);
 const {imageUrl,name,price,description} =items[0];
   function handleOnClick() {
     document.querySelector('.more-description').style.height = 'min-content'
@@ -31,7 +31,7 @@ const {imageUrl,name,price,description} =items[0];
     else
       likeColor.setAttribute('fill','#fff')
 
-    console.log(props)
+   // console.log(props)
     alert('added to wishlist')
   }
   
@@ -46,9 +46,10 @@ const {imageUrl,name,price,description} =items[0];
         <div className="image"
         style={{
             backgroundImage: `url(${imageUrl})`,
-            width: '100%', position: 'relative', height: '400px'
+            width: '100%', height: '400px'
         }}
         />
+        {/* <img src={imageUrl} alt="imageUrl" /> */}
        
       </div>
     
@@ -72,7 +73,7 @@ const {imageUrl,name,price,description} =items[0];
                 <hr color='grey' style={{margin:'0'}}/>
                 <div style={{display:'flex',margin:'4px 0', justifyContent: 'space-between', color:'grey'}}>
                   <span>Maximum Retail Price</span>
-                  <del style={{color: 'grey',margin:'0 10px'}}>&#8377;{props.price*3}</del>
+                  <del style={{color: 'grey',margin:'0 10px'}}>&#8377;{price*3}</del>
                 </div>
                 <div style={{display:'flex',margin:'4px 0', justifyContent: 'space-between', color:'grey'}}>
                   <span>Selling Price</span>
@@ -81,7 +82,7 @@ const {imageUrl,name,price,description} =items[0];
                 <hr color='grey' style={{margin:'0'}}/>
                 <div style={{display:'flex', justifyContent: 'space-between',marginTop:'6px'}}>
                   <h6>Special Price</h6>
-                  <span style={{color: 'grey',margin:'0 10px'}}>&#8377;{props.price}</span>
+                  <span style={{color: 'grey',margin:'0 10px'}}>&#8377;{price}</span>
                 </div>
               </div>
           </div>

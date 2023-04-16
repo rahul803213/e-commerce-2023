@@ -1,17 +1,21 @@
 .related-product-parent{
-    display:flex;
-    padding: 10px;
+    display: flex;
+    padding: 1rem;
     width: 100%;
     justify-content: center;
     flex-flow: column wrap;
+    border: 1px solid green;
+    overflow: none;
    
  & .related-page{
     display: grid;
-    grid-template-columns: auto auto auto auto ;
-    width: 100%;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    width: initial;
     flex-flow:row wrap;
-    grid-gap: 30px 20px;
-    padding: 10px;
+    grid-gap: 1rem;
+    padding: 1rem;
+    border: 1px solid blue;
+    overflow: none;
 }
 
 @media screen and (max-width: '600px') {

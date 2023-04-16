@@ -12,7 +12,7 @@ import blankwish from "../../assets/image/wishempty.webp"
 import './wishlistPage.styles.scss';
 
 const WishlistPage = ({WishlistItems}) => {
-    console.log(WishlistItems);
+   // console.log(WishlistItems);
     return(
         <div className="wishlist-page">
           

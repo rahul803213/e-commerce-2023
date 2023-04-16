@@ -11,13 +11,15 @@ import './collection-page.styles.scss'
 const CollectionPage = () =>{
     const p = useParams();
    
-    console.log("p",p.param)
+  //  console.log("p",p.param)
 
 //use selctor is used here
-const items = useSelector((state)=>state.shop.collections.find(collection=>collection.title.toLowerCase()===p.param));
-console.log("shop state",items);
+const items = useSelector((state)=>state.shop.collections ? 
+          state.shop.collections.find(collection=>collection.title.toLowerCase()===p.param)
+                              : []);
+// console.log("shop state",items);
 const title =items.title;
- console.log({'title':title})
+// console.log({'title':title})
 
 //use selector end here
 
