@@ -9,3 +9,8 @@ export const clear_item_from_wishlist = (item)=>({
     type:wishlistActionTypes.CLEAR_ITEM_FROM_WISHLIST,
     payload:item
 })
+
+export const isInWishList = (item)=>({
+    type:wishlistActionTypes.IS_IN_WISH_LIST,
+    payload:item
+})

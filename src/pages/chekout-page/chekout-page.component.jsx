@@ -22,7 +22,7 @@ const CheckOutPage = ({cartItems,total}) =>(
         <div className="header-block" ><span>Remove</span></div>
     </div>
        { cartItems.map(cartItem=><CheckoutItem key={cartItem.id} cartItem={cartItem}/>)}
-       <div className="total" >Total:₹{total}</div>
+       <div className="total" >Total:${total}</div>
        <StripeCheckoutButton price={total}></StripeCheckoutButton>
       </div>  
         : <div> <img src={blankcart} alt="empty-cart"  />

@@ -18,7 +18,7 @@ const Header =({currentUser,hidden,wishlistitems})=>{
   // console.log();
 //const navigate=useNavigate();
     return(
-        <div className='header'>
+    <div className='header'>
     <Link className='logo-container' to='/'>
       <Logo className='logo' />
     </Link>
@@ -37,7 +37,7 @@ const Header =({currentUser,hidden,wishlistitems})=>{
       <Link className='option' to='/shop'>
         SHOP
       </Link>
-      <Link className='option' to='/shop'>
+      <Link className='option' to='/contact'>
         CONTACT
       </Link>
       {currentUser ? (

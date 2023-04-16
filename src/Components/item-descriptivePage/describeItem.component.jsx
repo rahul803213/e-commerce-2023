@@ -8,6 +8,11 @@ import { addItems } from '../../redux/cart/cart.actions'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router'
 import RelatedProduct from '../related-product/related-product.component'
+import { createStructuredSelector } from 'reselect'
+import { add_item_in_wishlist } from '../../redux/wishlist/wishlist.action'
+
+import { selectWishlistItems } from '../../redux/wishlist/wishlist.selector'
+import { isInWishList } from '../../redux/wishlist/wishlist.utils'
 
 // import { Scrollbars } from 'react-custom-scrollbars-2'; scrollbar use krna hai toh isko use kro
 
@@ -18,21 +23,27 @@ const param=useParams();
   const items = useSelector((state)=>
   state.shop.collections.find(collection=>collection.title.toLowerCase()==param.param1)
   .items.filter(a=>a.id==param.param2));
-//console.log("ITEM",items);
+console.log("ITEM",props.wishlistItems);
+
 const {imageUrl,name,price,description} =items[0];
+
   function handleOnClick() {
     document.querySelector('.more-description').style.height = 'min-content'
   }
   function handleOnLike() {
-    let likeColor = document.querySelector('.like')
-
-    if(likeColor.getAttribute('fill') === '#fff')
-      likeColor.setAttribute('fill','red')
-    else
-      likeColor.setAttribute('fill','#fff')
+    props.add_item_in_wishlist(items[0]);
+   // let likeColor = document.querySelector('.like')
+  //  var presentItemInWishlist = props.wishlistItems.find(a=>a.id==items[0].id);
+  //  console.log("hello",props.wishlistItems);
+  //  alert(presentItemInWishlist);
+  //  if(isInWishList(props.wishlistItems,items[0]))
+   //   likeColor.setAttribute('fill','red')
+   // else
+   //   likeColor.setAttribute('fill','#fff')
 
    // console.log(props)
-    alert('added to wishlist')
+ 
+ //   alert('added to wishlist')
   }
   
   // props :- title,rate, count, price,
@@ -40,8 +51,15 @@ const {imageUrl,name,price,description} =items[0];
   <>
     <div className='detail-card'>
       <div className="image-section">
-        <div className='likeBox' onClick={handleOnLike}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" className="like" fill="#fff" stroke="#FFF" fillRule="evenodd" opacity=".9"></path></svg>
+        <div className='likeBox' onClick={()=> props.add_item_in_wishlist(items[0])}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" 
+          height="24"
+           viewBox="0 0 20 16"
+          
+           >
+          <path
+           d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" 
+          className="like" fill={`${isInWishList(props.wishlistItems,items[0]) ? 'red' : '#fff' } `} stroke="#FFF" fillRule="evenodd" opacity=".9"></path></svg>
         </div>
         <div className="image"
         style={{
@@ -63,8 +81,8 @@ const {imageUrl,name,price,description} =items[0];
         </div>
         <div><b style={{color:'green'}}>Special price</b></div>
         <div style={{display:'flex', width:'fit-content', alignItems: 'center', justifyContent:'space-between',margin:'10px 0'}}>
-            <h5>&#8377;{props.price} </h5>
-            <del style={{color: 'grey',margin:'0 10px'}}>&#8377;{props.price*3}</del>
+            <h3>${price} </h3>
+            <del style={{color: 'grey',margin:'0 10px'}}>${price*3}</del>
             <span style={{fontWeight:'bolder', color:'green',margin: '0 10px 0 0'}}>86% Off</span>
           <div style={{position:'relative'}}>
             <BsInfoCircle style={{cursor:'pointer'}} className='infoIcons'/>
@@ -77,7 +95,7 @@ const {imageUrl,name,price,description} =items[0];
                 </div>
                 <div style={{display:'flex',margin:'4px 0', justifyContent: 'space-between', color:'grey'}}>
                   <span>Selling Price</span>
-                  <del style={{color: 'grey',margin:'0 10px'}}>&#8377;{props.price*1.2}</del>
+                  <del style={{color: 'grey',margin:'0 10px'}}>&#8377;{price*1.2}</del>
                 </div>
                 <hr color='grey' style={{margin:'0'}}/>
                 <div style={{display:'flex', justifyContent: 'space-between',marginTop:'6px'}}>
@@ -88,7 +106,7 @@ const {imageUrl,name,price,description} =items[0];
           </div>
         </div>
         <div style={{display:"flex",marginBottom:"50px"}}>
-        <CustomButton yellow onClick={()=>{props.addItems(items[0]);alert("Item Added To Cart")}} style={{marginRight:"40px"}}>Add To Cart</CustomButton>
+        <CustomButton yellow onClick={()=>{props.addItems(items[0])}} style={{marginRight:"40px"}}>Add To Cart</CustomButton>
         <CustomButton yellow onClick={()=>{navigate('/checkout');props.addItems(items[0])}}  style={{}}>Buy Now</CustomButton>
         </div>
         
@@ -157,7 +175,12 @@ const {imageUrl,name,price,description} =items[0];
   )
 }
 const MapDispatchToProps = dispatch =>({
-  addItems: item => dispatch(addItems(item))
+  addItems: item => dispatch(addItems(item)),
+  add_item_in_wishlist: item => dispatch(add_item_in_wishlist(item)),
+ // isInWishList: item => dispatch(isInWishList(item))
 })
-
-export default connect(null,MapDispatchToProps)(DescribePage)
+const mapStateToProps =  createStructuredSelector({
+  wishlistItems: selectWishlistItems
+}
+)
+export default connect(mapStateToProps,MapDispatchToProps)(DescribePage)

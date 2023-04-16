@@ -9,10 +9,10 @@ const RelatedProduct = (props) =>{
 
     return(
         <div className="related-product-parent">
-         <h2 style={{padding: '0 20px'}}> Related Product </h2> 
+         <h2 style={{padding: '1rem 1.2rem'}}> Related Product </h2> 
            <div className="related-page">
             { 
-                items.items.map(collection => 
+                items.items.filter((collection,idx)=>idx<5).map(collection => 
                 <CollectionMenu key={collection.id} item={collection} related title={props.title}/>)
             }
         </div>

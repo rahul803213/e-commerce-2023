@@ -16,7 +16,7 @@ const CheckoutItem = ({cartItem,clearItemFromCart,addItems,decrementItemFromCart
             <span className="decrement" onClick={()=>decrementItemFromCart(cartItem)}>	&#10096;</span>
           {quantity}
           <span className="increment" onClick={()=>addItems(cartItem)}> &#10097;</span></span>
-          <span className="price">₹{price}</span>
+          <span className="price">${price}</span>
           <div className="remove-button" onClick={()=>clearItemFromCart(cartItem)}>&#10005;</div>
         </div>
     )

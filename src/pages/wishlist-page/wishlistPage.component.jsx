@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectWishlistItems } from "../../redux/wishlist/wishlist.selector";
 import blankwish from "../../assets/image/wishempty.webp"
-
+import CustomButton from "../../Components/custom-button/custom-button.component";
+import { Link } from "react-router-dom";
 
 import './wishlistPage.styles.scss';
 
@@ -30,7 +31,12 @@ const WishlistPage = ({WishlistItems}) => {
         <WishlistItem key={wishlistitem.id}   wishlistitem={wishlistitem} />)}
         </div>
         :
+        <div>
         <img src={blankwish} alt="empty-wishlist" />
+        <Link to="/shop">
+          <CustomButton >Back To Shop</CustomButton>
+          </Link>
+</div>
     
          }
         </div>

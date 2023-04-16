@@ -1,0 +1,44 @@
+.parent-footer{
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #232F3E;
+    color: whitesmoke;
+  //  width:auto;
+  
+    & .first-child{
+      display: flex;
+      justify-content: center;
+      background: #37475A;
+      margin-bottom: 1.5rem;
+     // width: 100%;
+  
+      & .Link{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 0.7rem 0;
+      }
+    }
+  
+    & .second-child{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+  
+      & .column{
+        font-size: rem;
+        display: flex;
+        flex-flow: column wrap;
+  
+        & .Link{
+          color:white;
+          font-size: 0.8rem;
+        }
+        & .Link:hover{
+          text-decoration: underline 0.1rem solid white;
+        }
+      }
+    }
+  }
+    
+  

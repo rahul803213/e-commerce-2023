@@ -1,10 +1,10 @@
 .collection-menu{
     display:flex;
-  //  width: 100%;
-    padding: 10px;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 0.8rem;
     // height: 50vh;
     // flex:0 0 auto;
-   
     // margin:20px 20px;
     // position:relative;
   
@@ -18,9 +18,10 @@
         }
     }
 
-.image{
-    height: 100%;
+.image{ 
+    height: 50vh;
     width: 100%;
+    position: relative;
     background-position: center;
     background-size: cover; 
 }
@@ -62,11 +63,15 @@
 }
 
 .related{
-    width:50%;
-    height: 50%;
-    flex-flow: column nowrap;
-   }
-   .normal{
     width:100%;
-    flex-flow: row wrap;
+    height: auto;
+    flex-flow: column nowrap;
+    .collection-menu-footer{
+        display: none;
+    }
+
+    & .image{
+        height: 30vh;
+    }
    }
+   

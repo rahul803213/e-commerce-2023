@@ -14,7 +14,7 @@ const WishlistItem = ({wishlistitem,addItems,clear_item_from_wishlist}) =>{
                 <img src={`${imageUrl}`} alt="wishlist-item" />
               </div>
               <div className="name">{name}</div>
-              <div className="price">₹{price}</div>
+              <div className="price">${price}</div>
          <div className="add-to-cart">
             <CustomButton onClick={()=>addItems(wishlistitem)}>Add To Cart</CustomButton>
          </div>

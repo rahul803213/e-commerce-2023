@@ -1,10 +1,12 @@
 import './App.css';
 import React from 'react';
+import Footer from './Components/footer/footer.component'
 // import {} from 'react-icons/fa'
 // import {FcGoogle} from 'react-icons/fc'
 import { Route , Routes ,Navigate } from 'react-router-dom';
 import './App.css';
 
+import Contact from './Components/contact/contact.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import ShopPage from './pages/shop-page/shop-page.component';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/sign-in-and-signup.component';
@@ -90,6 +92,7 @@ componentWillUnmount(){
 }
   render(){
     return (
+  <>
       <div className="App">
         <Header />
       <Routes>
@@ -100,10 +103,13 @@ componentWillUnmount(){
         <Route exact path='/signin' element = {this.props.currentUser ? <Navigate to="/" /> :<SignInAndSignUpPage />} />
       
         <Route exact path="/wishlist" element={<WishlistPage />}/>
-        
-  </Routes>
-        
+        <Route exact path="/contact" element={<Contact/>}/>
+      </Routes>
+      
+      <Footer/>
       </div>
+      
+  </>    
     );
   }
   
