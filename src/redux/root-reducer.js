@@ -6,6 +6,7 @@ import shopReducer from "./shop/shop.reducers";
 import wishlistReducer from "./wishlist/wishlist.reducer";
 
 import persistReducer from "redux-persist/es/persistReducer";
+import SearchReducer from "./search/search.reducers";
 import storage from "redux-persist/lib/storage";
 const persistConfig ={
     key:'root',
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     cart:CartReducer,
     directory:directoryReducer,
     shop:shopReducer,
-    wishlist:wishlistReducer
+    wishlist:wishlistReducer,
+    search:SearchReducer
 })
 
 export default persistReducer(persistConfig,rootReducer) 

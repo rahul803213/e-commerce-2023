@@ -281,4 +281,31 @@ const SHOP_DATA = [
     }
   ]
 
+export const search_data = SHOP_DATA.reduce((acc,data)=>
+  { var search_data=[]
+console.log("data",data);
+const {title}=data;
+console.log("abhi title",title)
+const transform=data.items.map(item=>{
+          item.title=title
+}  )
+ console.log("transform",transform);
+    acc.push(data.items);
+   return acc;}
+,[])
+
+
+
+export const final_search_data= search_data.reduce((acc,item)=>{
+
+ const {title}= item
+console.log("title",item);
+
+ item.map(a=>{a[title]=title;acc.push(a)})
+ return acc;
+
+},[])
+
+
+  
   export default SHOP_DATA;

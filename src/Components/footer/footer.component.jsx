@@ -2,15 +2,16 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './footer.styles.scss'
 
+function scrollToTop() {
+  document.documentElement.scrollTop = 0; // for chorme, firefox, IE and opera
+}
 
 const footer = () =>  (
  
   <div className='parent-footer'>
 
 {/* first footer */}
-    <div className='first-child'>
-      <Link to='/' className='Link'>Back to top</Link>
-    </div>
+    <div className='first-child' onClick={scrollToTop}>Back to top</div>
 
 {/* second footer */}
     <div className="second-child">

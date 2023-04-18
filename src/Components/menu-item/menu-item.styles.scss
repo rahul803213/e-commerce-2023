@@ -1,11 +1,9 @@
 .menu-item{
     border:1px solid black;
-    //background-color:teal;
     min-width:30%;
-      height:240px;
+    height:240px;
     display:flex;
     flex:1 1 auto;
-   // padding:10px 10px;
     align-items:center;
     justify-content:center;
     margin:0 7.5px 15px;
@@ -14,24 +12,16 @@
    
     
     &:hover  .background-image{
-
     transform: scale(1.2);
     transition: transform 1s;
-
-   
-
     }
+
     &:hover .content{
       background-color: white;
     }
-   
- 
 
-
-    
-
-    &.large{
-height:380px;
+    & .large{
+      height:380px;
     }
   
   &:first-child{
@@ -47,34 +37,50 @@ height:380px;
     background-size: cover;
     height: 100%;
     width:100%;
-
-  
-
   }
 
 
 .content{
-    height:90px;
-    padding:20px 25px;
+    height: 15vh;
+    width: 12vw;
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    align-content:center;
-    border:1px solid black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid black;
     background-color: rgba(249, 243, 243, 0.7) ;
     position:absolute;
+    overflow: overlay;
    // opacity: 0.5;
 
-    .title{
+    & .title{
         font-weight: bold;
-        font-size: 22px;
-       // margin-bottom: 6px;
+        display: block;
+        font-size: 1rem;
         color:#4a4a4a;
 
     }
-    .subtitle{
+    & .sub-title{
+        display: block;
         font-weight: lighter;
-        font-size: 16px;
+        font-size: 1rem;
+        text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 600px){
+    
+    .menu-item{
+      margin: 0.4rem;
+      
+      &:first-child , &:last-child{
+        margin: 0.4rem;
+      }
+    }
+    
+    .content{
+      height: 15vh;
+      width: 25vw;
     }
   }
 

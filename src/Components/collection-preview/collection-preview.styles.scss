@@ -1,22 +1,23 @@
-.collection-preview{
-    display:flex;
-    flex-flow: column wrap;
-    width: 100%;
-  //  align-items: center;
-    align-content: flex-start;
-    flex:1 1 auto;
-h2{
-  &:hover{
-    cursor: pointer;
-  }
-}
-   
-}
 .collection-preview-card-group{
     width: 100%;
-    display:flex;
-    flex:1 1 auto;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    // border: 0.1rem solid red;
+    &:hover{
+      cursor: pointer;
+    }
+}
+
+// for phone view
+@media only screen and (max-width: 400px) {
+  .collection-preview-card-group{
+    grid-template-columns: 100%;
+  }
+} 
+
+// for tablet view
+@media only screen and (max-width: 720px) and (min-width: 401px){
+  .collection-preview-card-group{
+    grid-template-columns: 50% 50%;
+  }
 }

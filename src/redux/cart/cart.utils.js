@@ -1,6 +1,10 @@
 import { firestore } from "../../firebase/firebase.utils";
+import { useSelector } from "react-redux";
+import { PushCartItemsInDB } from "../../firebase/firebase.user";
 
-export const addItemToCart =(cartItems,cartItemToAdd) =>{
+
+export const addItemToCart =(cartItems,cartItemToAdd,user) =>{
+  console.log("cart user id",user);
   const existingCartitem = cartItems.find(
       cartItem=> cartItem.id===cartItemToAdd.id
       )
@@ -13,7 +17,7 @@ export const addItemToCart =(cartItems,cartItemToAdd) =>{
       }
      else result=[...cartItems,{...cartItemToAdd,quantity:1}]
        
-     //  await collect.set(data);
+        
      return result;
   }
   

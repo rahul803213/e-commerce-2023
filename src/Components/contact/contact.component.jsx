@@ -13,9 +13,10 @@ const contact = () => {
         {/* first child is map of store location  */}
         <div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7217.191747473915!2d87.04385559999996!3d25.2505331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1679485729198!5m2!1sen!2sin" 
-            height="450" 
+
+            height="400" 
             width="100%"
-            style={{border:0}} allowFullScreen="true" title="map" loading="lazy" 
+            style={{border:'0'}} allowFullScreen={true} title="map" loading="eager" 
             referrerPolicy="no-referrer-when-downgrade"  ></iframe>
       </div>
 
@@ -23,12 +24,12 @@ const contact = () => {
       <div className="infoBox">
         {/* first box */}
         <div className="column">
-            <form action="">
+            <form action="post">
                 <input type="text" name="Name" id="" placeholder="Name"/>
                 <input type="email" name="Email" id="" placeholder="Email"/>
                 <input type="tel" name="PhoneNo" id="" placeholder="Phone No" />
-                <textarea name="Comment" id="" cols="50" rows="5" placeholder="Comment here"></textarea>
-                <input type="submit" value="send" />
+                <textarea name="Comment" id="" cols="50" rows="3" placeholder="Comment here..." wrap='hard' style={{resize:'vertical'}}></textarea>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
 

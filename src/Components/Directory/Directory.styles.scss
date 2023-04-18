@@ -1,7 +1,13 @@
 .directory{
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     flex-flow: row wrap;
-    justify-content:space-between;
-    
+    justify-content: space-between;
   }
+
+@media only screen and (max-width: 600px) {
+  & .directory{
+    flex-direction: column;
+    width: 100vw;
+  }
+}  

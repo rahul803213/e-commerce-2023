@@ -13,11 +13,16 @@ import { add_item_in_wishlist } from '../../redux/wishlist/wishlist.action'
 
 import { selectWishlistItems } from '../../redux/wishlist/wishlist.selector'
 import { isInWishList } from '../../redux/wishlist/wishlist.utils'
+import { selectCurrentUser } from '../../redux/user/user.selectors'
+import { firestore } from '../../firebase/firebase.utils'
+import firebase from '../../firebase/firebase.utils'
+import { PushCartItemsInDB } from '../../firebase/firebase.user'
 
 // import { Scrollbars } from 'react-custom-scrollbars-2'; scrollbar use krna hai toh isko use kro
 
 const DescribePage = (props) => {
- const navigate = useNavigate();
+  const navigate = useNavigate();
+//console.log(props.user.id);
 const param=useParams();
   //console.log({hi:param});
   const items = useSelector((state)=>
@@ -52,13 +57,8 @@ const {imageUrl,name,price,description} =items[0];
     <div className='detail-card'>
       <div className="image-section">
         <div className='likeBox' onClick={()=> props.add_item_in_wishlist(items[0])}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" 
-          height="24"
-           viewBox="0 0 20 16"
-          
-           >
-          <path
-           d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 16">
+          <path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" 
           className="like" fill={`${isInWishList(props.wishlistItems,items[0]) ? 'red' : '#fff' } `} stroke="#FFF" fillRule="evenodd" opacity=".9"></path></svg>
         </div>
         <div className="image"
@@ -106,7 +106,12 @@ const {imageUrl,name,price,description} =items[0];
           </div>
         </div>
         <div style={{display:"flex",marginBottom:"50px"}}>
-        <CustomButton yellow onClick={()=>{props.addItems(items[0])}} style={{marginRight:"40px"}}>Add To Cart</CustomButton>
+        <CustomButton yellow onClick={async ()=>{props.addItems(items[0]);
+       // await firestore.doc('/users/')
+       // PushCartItemsInDB(props.user.id,items[0]);
+                
+        
+        }} style={{marginRight:"40px"}}>Add To Cart</CustomButton>
         <CustomButton yellow onClick={()=>{navigate('/checkout');props.addItems(items[0])}}  style={{}}>Buy Now</CustomButton>
         </div>
         
@@ -180,7 +185,8 @@ const MapDispatchToProps = dispatch =>({
  // isInWishList: item => dispatch(isInWishList(item))
 })
 const mapStateToProps =  createStructuredSelector({
-  wishlistItems: selectWishlistItems
+  wishlistItems: selectWishlistItems,
+  user: selectCurrentUser
 }
 )
 export default connect(mapStateToProps,MapDispatchToProps)(DescribePage)

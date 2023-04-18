@@ -9,6 +9,8 @@ import { converCollectionsToMaps } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import { UpdateCollection } from "../../redux/shop/shop.actions";
 import WithSpinner from "../../Components/with-spinner/with-spinner.components";
+import { createStructuredSelector } from "reselect";
+import { selectCollections } from "../../redux/shop/shop.selectors";
 
 
 const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
@@ -16,7 +18,7 @@ const DescribePageWithSpinner = WithSpinner(DescribePage);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends React.Component  { 
-
+  
 state = {
     loading:true
 }
@@ -58,10 +60,13 @@ return(
     }
 
 }
+const mapStateToProps = createStructuredSelector({
+    collections:selectCollections
+})
 
 const MapDispatchToProps = dispatch =>({
     UpdateCollection: collectionsMap => dispatch(UpdateCollection(collectionsMap))
 })
 
 
-export default connect(null,MapDispatchToProps)(ShopPage);
+export default connect(mapStateToProps,MapDispatchToProps)(ShopPage);

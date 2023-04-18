@@ -6,10 +6,11 @@
   //  width:auto;
   
     & .first-child{
-      display: flex;
-      justify-content: center;
+      line-height: 8vh;
+      text-align: center;
       background: #37475A;
       margin-bottom: 1.5rem;
+      cursor: pointer;
      // width: 100%;
   
       & .Link{

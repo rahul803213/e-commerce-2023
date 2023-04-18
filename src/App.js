@@ -19,12 +19,15 @@ import { connect } from 'react-redux';
 import CheckOutPage from './pages/chekout-page/chekout-page.component';
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 import { PushCartItemsInDB } from './firebase/firebase.user';
+import { addCollectionAndDocumentInFirestore } from './firebase/firebase.utils';
 //import DescriptionPage from './pages/Description-Page/description.component';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCollections } from './redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
+import { search_data } from './redux/shop/shop.data';
+import { final_search_data } from './redux/shop/shop.data';
 
 
 class App extends React.Component {
@@ -35,7 +38,8 @@ class App extends React.Component {
 
 componentDidMount(){
 
-
+   console.log("search_data",search_data);
+   console.log("final_search_data",final_search_data)
 
 
 
@@ -49,15 +53,18 @@ componentDidMount(){
   //if so then we will save the user and process the data
 this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
  // console.log(userAuth)
-  const {setCurrentUser,currentUser} = this.props;
+  const {setCurrentUser,currentUser,collectionArray} = this.props;
   //this.setState({CurrentUser:userAuth});
 
   if(userAuth){    
               
                const userRef =await createUserProfileDocument(userAuth);
-              // console.log(userRef)
+             
               //step 11: always looking for changes in userRef and the 
               //update the state on the base of listening continousay
+            //  const item=[];
+            //  item.push({price:25})
+            //  await userRef.collection('cart').add({item}).then((doc)=> console.log(doc))
               userRef.onSnapshot(userRef, (snapShot) => {
             //  console.log(snapShot.data());
              setCurrentUser(
@@ -74,10 +81,9 @@ this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
  
              }
 
-             else{
-  setCurrentUser(userAuth);
+             else setCurrentUser(userAuth);
  // addCollectionAndDocumentInFirestore('collections',collectionArray.map(({title,items})=>({title,items})));
-}  
+ 
 //PushCartItemsInDB(userAuth.uid);
 
 })

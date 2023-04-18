@@ -1,35 +1,128 @@
-
-.header {
-  height: 20vh;
+.grid-header{
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  padding: 0 1.6rem;
+  display: grid;
+  // border: 0.1rem solid blue;
+  grid-template-rows: 10vh 10vh;
+  grid-template-columns: 40% 60%;
 
-  .logo-container {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  & .item-1{
+    grid-row-start: span 2;
+    // border: 1px solid green;
     
+    & .logo-container{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      }
   }
 
-  .options {
-    width: 50%;
+  & .item-2{
+    width: 100%;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: flex-end;
+    // border: 1px solid red;
 
-    .option {
-      padding: 0.8rem 1rem;
-      cursor: pointer;
-    }
-    .wishlist-image{
+    & .wishlist-image{
       height: 22px;
       margin-right: 10px;
      // background-color: red;
     }
+
+    & .option {
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+    }
+    & .option:hover{
+      color: grey;
+      font-weight: 600;
+    }
   }
+  
+.like{
+  &:hover{
+    cursor: pointer;
+  }
+}
+  
+}
+
+.sideBoxHeader{
+  display: none;
+  width: 100vw;
+  border-bottom: 0.1rem solid rgb(125, 125, 133);
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.sideBox{
+  width: 0;
+  display: none;
+  flex-direction: column;
+  transition: width 1s linear;
+  background-color: rgb(237, 231, 231);
+  color: black;
+  height: 90vh;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+
+  & .user-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    font-size: 0.8rem;
+    font-weight: 500;
+    overflow: overlay;
+
+    &:hover{
+      background: black;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  }
+  & .side-items{
+    cursor: pointer;
+
+    & .option{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: inherit;
+      background: inherit;
+      height: 8vh;
+      width: 100%;
+    }
+
+    &:hover{
+      background: dodgerblue;
+      color: white;
+      font-weight: 600;  
+      border-bottom: 0.1rem solid black;
+    }
+  }
+  
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  .grid-header{
+    display: none;
+  }
+  .sideBoxHeader{
+    display: flex;
+  }
+  .sideBox{
+    display: flex;
+  }
+  
 }
 

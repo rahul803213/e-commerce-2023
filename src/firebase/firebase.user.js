@@ -1,12 +1,15 @@
-import firebase from 'firebase/compat/app'; //step 1: import firebase this is important
-import 'firebase/compat/auth';
-import { firestore } from './firebase.utils';
-export const PushCartItemsInDB = async (id) =>{
-
-    const cartRef= firestore.collection(`/users/${id}/cart`);
-    const cartArray = await cartRef.get();
-    console.log(cartArray);
+import {getDatabase} from "firebase/database"
+import { app } from "./firebase.utils"
+import firebase from "./firebase.utils";
+import { firestore } from "./firebase.utils";
 
 
+//const database = getDatabase(app);
+//  database= firebase.database();
+
+export const PushCartItemsInDB = async (id,items)=>{
+        // Create a new post reference with an auto-generated id
+        
+        await firestore.collection(`users/${id}/cart`).doc().set(items).then((a)=>console.log(a));
 
 }

@@ -11,10 +11,11 @@ const config={
   storageBucket: "e-commerce-b4218.appspot.com",
   messagingSenderId: "352925579858",
   appId: "1:352925579858:web:5a65ad7a89871428813d8b",
-  measurementId: "G-4Q88CHCD4G"
+  measurementId: "G-4Q88CHCD4G",
+ // database:"https://e-commerece.firebaseio.com"
 }
 //step 3: For Initialize the configuration using initalizeApp method
-firebase.initializeApp(config);
+export const app =firebase.initializeApp(config);
 
 //step 4: for authenticaion we will export at various places also firestore to save the authentication and other stuff
 export const auth=firebase.auth();
