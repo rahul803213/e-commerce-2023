@@ -15,23 +15,23 @@ import './wishlistPage.styles.scss';
 const WishlistPage = ({WishlistItems}) => {
    // console.log(WishlistItems);
     return(
-        <div className="">
+        <div className="wishlist-page">
           
          { WishlistItems.length ?
-            <div className="wishlist-page">    
+            <div>    
                 <div className="wishlist-header">
-                <div className="header-block">Product</div>
-                <div className="header-block">Description</div>
-                <div className="header-block price">Price</div>
-                <div className="header-block">Add To Cart</div>
-                <div className="header-block">Remove</div>
-            </div>
+                    <div className="header-block">Product</div>
+                    <div className="header-block">Description</div>
+                    <div className="header-block price">Price</div>
+                    <div className="header-block">Add To Cart</div>
+                    <div className="header-block">Remove</div>
+                </div>
         { WishlistItems.map(wishlistitem => 
     
         <WishlistItem key={wishlistitem.id}   wishlistitem={wishlistitem} />)}
         </div>
         :
-        <div className="wishlist-page-mobile ">
+        <div>
             <img src={blankwish} alt="empty-wishlist" />
             <Link to="/shop">
                 <CustomButton >Back To Shop</CustomButton>

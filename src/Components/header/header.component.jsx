@@ -28,7 +28,7 @@ const Header =({currentUser,hidden,wishlistitems,collections,toggleSearch})=>{
   // console.log();
 //const navigate=useNavigate();
 const [search,setSearch] = useState("");
-console.log("collections",collections);}
+console.log("collections",collections);
 
 // const [theme,setTheme] = useState('Dark')
 // function changeTheme() {
@@ -46,12 +46,11 @@ console.log("collections",collections);}
 
 function showSideBar() {
   let ele = document.querySelector('.sideBox').style
-  console.log(ele.width)    // on first click it doesnot show anything but when this icons has been clicked for first time then on further click it toggle the side-bar //
 
-  if(ele.width === '0%'){
-    ele.width = '50%'
-  }else{
+  if(ele.width === '50%'){
     ele.width = '0%'
+  }else{
+    ele.width = '50%'
   }
 }
 
@@ -60,14 +59,16 @@ function showSideBar() {
   <>
   
     <div className="grid-header">
-
-      <div className="item-1">
+    <Link className='logo-container' to='/'>
+          <Logo className='logo' />
+        </Link>
+      {/* <div className="item-1">
         <Link className='logo-container' to='/'>
           <Logo className='logo' />
         </Link>
-      </div>
+      </div> */}
 
-      <div className="item-2">
+     {/*  <div className="item-2">
                <Search show placeholder="Search...." handleChange={(e)=>{toggleSearch(e.target.value)}}search={search} />
         <SearchCard search={search} />
         <div >
@@ -77,10 +78,17 @@ function showSideBar() {
             <span></span>
           </Link>
         </div>
-      </div>
+      </div> */}
 
       <div className="item-2">
+      <Search show placeholder="Search...." handleChange={(e)=>{toggleSearch(e.target.value)}}search={search} />
+        <SearchCard search={search} />
         <Link className='option' to='/shop'> SHOP </Link>
+        <Link to='/wishlist' style={{display:'flex', alignItems:'center'}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" 
+            className="like" fill={`${wishlistitems.length ? "red" : "black"}`} stroke="#FFF" fillRule="evenodd" opacity=".9" ></path></svg>
+            <span></span>
+          </Link>
         <Link className='option' to='/contact'> CONTACT </Link>
     
         {currentUser ? ( <div className='option' onClick={() => auth.signOut()}> SIGN OUT </div> ) : ( <Link className='option' to='/signin'> SIGN IN </Link> )}
@@ -128,7 +136,7 @@ function showSideBar() {
     </div>
 
 </>
-)
+)}
 
 //creatStructuredSelector is a function from reselect that 
 // pass state to each selectors used inside

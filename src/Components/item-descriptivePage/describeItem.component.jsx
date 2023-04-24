@@ -61,17 +61,10 @@ const {imageUrl,name,price,description} =items[0];
           <path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" 
           className="like" fill={`${isInWishList(props.wishlistItems,items[0]) ? 'red' : '#fff' } `} stroke="#FFF" fillRule="evenodd" opacity=".9"></path></svg>
         </div>
-        <div className="image"
-        style={{
-            backgroundImage: `url(${imageUrl})`,
-            width: '100%', height: '400px'
-        }}
-        />
-        {/* <img src={imageUrl} alt="imageUrl" /> */}
        
+        <div className="image" style={{ backgroundImage: `url(${imageUrl})`, width: '100%', height: '400px' }} />
       </div>
     
-
       <div className="description-section">
         <h5 style={{color:'grey', margin: '5px 10px'}}>{name}</h5>
         <h3>{name} {description}</h3>
@@ -112,7 +105,7 @@ const {imageUrl,name,price,description} =items[0];
                 
         
         }} style={{marginRight:"40px"}}>Add To Cart</CustomButton>
-        <CustomButton yellow onClick={()=>{navigate('/checkout');props.addItems(items[0])}}  style={{}}>Buy Now</CustomButton>
+        <CustomButton yellow onClick={()=>{navigate('/checkout');props.addItems(items[0])}}  >Buy Now</CustomButton>
         </div>
         
         <div className='more-description'>

@@ -27,6 +27,12 @@ const CartReducer = (state=INITIAL_STATE,action)=>{
                     ...state,
                     cartItems:decrementItem(state.cartItems,action.payload)
                 })
+
+            case CartActionTypes.UPDATE_CART_ITEMS:
+                return({
+                    ...state,
+                    cartItems: action.payload
+                })
         default :return state;
     }
 }

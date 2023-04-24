@@ -18,3 +18,8 @@ export const decrementItemFromCart = item =>({
     type:CartActionTypes.DECREMENT_ITEM,
     payload:item
 })
+
+export const updateCart = item =>({
+    type:CartActionTypes.UPDATE_CART_ITEMS,
+    payload:item
+})

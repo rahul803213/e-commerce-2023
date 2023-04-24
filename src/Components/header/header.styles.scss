@@ -1,11 +1,12 @@
 .grid-header{
   width: 100%;
   display: grid;
+  margin-top:20px;
   // border: 0.1rem solid blue;
   grid-template-rows: 10vh 10vh;
   grid-template-columns: 40% 60%;
 
-  & .item-1{
+ /*  & .item-1{
     grid-row-start: span 2;
     // border: 1px solid green;
     
@@ -16,8 +17,16 @@
       align-items: center;
       height: 100%;
       }
-  }
+  } */
 
+  & .logo-container{
+    display: flex;
+    width: 100%;
+    margin-left: 40px;
+   // justify-content: center;
+    align-items: center;
+    height: 100%;
+    }
   & .item-2{
     width: 100%;
     display: flex;

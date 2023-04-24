@@ -55,8 +55,12 @@ handlechange = event =>{
       //  console.log(this.state);
         return(
             <div className="sign-in">
-                <div><h2> ALREADY HAVE AN ACCOUNT</h2></div>
-                <div><span>Sign In With Your Email And Password</span></div>
+                <div>
+                    <h2> ALREADY HAVE AN ACCOUNT</h2>
+                </div>
+                <div>
+                    <span>Sign In With Your Email And Password</span>
+                </div>
                 <form onSubmit={this.handleSubmit}>
                     <FormInput 
                     type="email" 
@@ -74,33 +78,18 @@ handlechange = event =>{
                     label="password"
                     required />
                     
-                    {/* <FontAwesomeIcon icon={faGoogleLogo} shake size="sm" style={{color: "#fafaf9",}} /> */}
-                  <div className="sign-in-buttons">
-                    <div style={{width:'70%',margin:'0 auto'}}>
-                        <CustomButton type="submit">sign in </CustomButton>
-                    </div>
-                    
-                    {/* <CustomButton onClick={signInWithGoogle}  isGoogleSignIn> <FcGoogle/> <span>sign in with google</span> </CustomButton>
-                    <CustomButton onClick={signInWithFacebook} > sign in with facebook</CustomButton> */}
-
-                 {/*    <CustomButton > */}
-                    <div style={{display:'flex',alignItems:'center',columnGap:'2%',justifyContent:'center',marginTop:'20px',fontWeight:'500',fontSize:'20px'}}>
-                        <span>Sign In with </span>
-                        <FcGoogle onClick={signInWithGoogle} style={{fontSize:'24px',cursor:'pointer'}}/> 
-                        <FaFacebook onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/> 
-                       {/*  <FaMobile onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
-                        <FaApple onClick={signInWithApple} style={{fontSize:'24px',cursor:'pointer'}}/>
-                        <FaLinkedin onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
-                        <FaTwitter onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
-                        <FaYahoo onClick={signInWithFacebook} style={{fontSize:'24px',cursor:'pointer'}}/>  
-                        <FaGithub onClick={sighInWithGithub} style={{fontSize:'24px',cursor:'pointer'}}/>    */}
+                    <div className="sign-in-buttons">
+                        <div style={{width:'70%',margin:'0 auto'}}>
+                            <CustomButton type="submit">sign in </CustomButton>
+                        </div>
                         
+                        <div style={{}} className="signInOptions">
+                            <span>Sign In with </span>
+                            <FcGoogle onClick={signInWithGoogle} className='hoverIcons'/> 
+                            <FaFacebook onClick={signInWithFacebook} className='hoverIcons'/> 
+                        </div>
 
                     </div>
-                 {/*    </CustomButton> */}
-
-                    
-                </div>
 
                 </form>
             </div>

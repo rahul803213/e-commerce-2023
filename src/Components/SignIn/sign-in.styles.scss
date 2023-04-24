@@ -1,4 +1,15 @@
 .sign-in{
+    //na hamra hua 
+    //na tumhara hua ishq ka ye shitam 
+    //na gawara hua......
+    //sun veriya...... saware........ x2
+    //
+    //dhalti raat ka ik musafir 
+    //subah alvida keh chala
+    //jeete ji tera ho saka na
+    //marke haq ada kar chala 
+    //na hamara hua na tumhara hua ishq ka ye shitam na gawara huaa........
+    //sun veriya....... saware.........x2
    width: 100%;
    display: flex;
    flex-direction: column;
@@ -12,6 +23,27 @@
     flex-flow:column wrap;
     // border: 1px solid blue;
     padding-top: 30%;
+
+    & .signInOptions{
+        display: flex;
+        align-items: center;
+        column-gap: 2%;
+        justify-content: center;
+        margin-top: 1.25rem;
+        font-weight: 500; 
+        font-size: 1.25rem;
+
+        & .hoverIcons{
+            font-size: 2.2rem;
+            cursor: pointer;
+            border-radius: 1.5rem;
+
+            &:hover{
+                background: grey;
+            }
+        }
+
+    }
 
     
 }

@@ -28,6 +28,8 @@ import { selectCollections } from './redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
 import { search_data } from './redux/shop/shop.data';
 import { final_search_data } from './redux/shop/shop.data';
+import PaymentPage from './pages/payment-page/payment-page.component';
+import { FetchCartItemsFromDatabase } from './firebase/firebase.user';
 
 
 class App extends React.Component {
@@ -73,15 +75,20 @@ this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
                   ...snapShot.data()
                 }
               );
+            
              
                                                 });
+                                               // 
 
               console.log("hi",currentUser)
+       //    currentUser ?   FetchCartItemsFromDatabase(currentUser.id) : null;
              // SetCartItemsIntoStateFromUserAccount(userAuth.uid)
  
              }
 
              else setCurrentUser(userAuth);
+
+          
  // addCollectionAndDocumentInFirestore('collections',collectionArray.map(({title,items})=>({title,items})));
  
 //PushCartItemsInDB(userAuth.uid);
@@ -110,6 +117,7 @@ componentWillUnmount(){
       
         <Route exact path="/wishlist" element={<WishlistPage />}/>
         <Route exact path="/contact" element={<Contact/>}/>
+        <Route exact path='/payment'  element={<PaymentPage />} />
       </Routes>
       
       <Footer/>

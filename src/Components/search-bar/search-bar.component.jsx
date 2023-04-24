@@ -40,21 +40,26 @@ export const SearchCard =connect((
     return (
         string ?
         <div className={`search-card ${ghost ? 'ghost' : ''}`}>
-         
+        
            
-           {
+           {    
             filtered_search_data.map(a => 
-              (  
-               <div onClick={()=> {Navigate(`/shop/${a.title.toLowerCase()}/${a.id}`);  toggleSearch('')   }} key={a.id} className="search-items" >
+            { return(  
+               <div onClick={()=> {Navigate(`/shop/${a.title.toLowerCase()}/${a.id}`);  toggleSearch('')   }} 
+               key={a.id} className="search-items" >
                <img src={a.imageUrl} alt="search-image" height="80px" className="search-image" />
                 <span className="name">{a.name}</span>
                       </div>
             
            
             )
+            }
             )
+           
+           
 
            }
+          
               
             
         </div>

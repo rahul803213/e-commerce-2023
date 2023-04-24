@@ -1,84 +1,134 @@
 
 .detail-card{
     display: flex;
-    flex-direction: row;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     height: 100vh;
-  }
-  .image-section{
-    position: relative;
-    padding: 1rem;
-    width: 40%;
-    height: 80vh;
-  }
-  .image-section > img{
-   max-width: 100%;
-  }
-  .likeBox{
-    width:3em;
-    height:3em;
-    border-radius:50%;
-    background:rgb(218, 211, 211);
-    position: absolute;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    top: 5%;
-    right: 10%;
-  }
+    gap: 2rem;
+
+    & .image-section{
+      position: relative;
+      padding: 0.5rem;
+      width: 30%;
+      height: 80vh;
+
+      & .likeBox{
+        width:3em;
+        height:3em;
+        border-radius:50%;
+        background:rgb(218, 211, 211);
+        position: absolute;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        top: 5%;
+        right: 10%;
+      }
+
+      & .image{
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-size: cover; 
+    }
+    }
   
-  .description-section{
-    margin-left: 80px;
-    width: 70%;
-    flex-direction: column;
-    padding: 10px 20px;
-    overflow-y: scroll;
-  }
-  .infoIcons:hover + .tooltip-box{
-    visibility: visible;
-    /* color: #0000ff; */
-    /* background-color: #000000; */
+    .description-section{
+      width: 70%;
+      flex-direction: column;
+      padding: 10px 20px;
+      overflow-y: scroll;
+  
+      .infoIcons:hover + .tooltip-box{
+        visibility: visible;
+        /* color: #0000ff; */
+        /* background-color: #000000; */
+        
+      }
+  
+      .tooltip-box{
+        transition: visibility 0.5s ease-in-out 0.2s;
+        background-color: #f5f5f7;
+        top: 30px;
+        left: -40px;
+        visibility: hidden;
+        position: absolute;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px 3px grey,-2px -2px 5px 3px grey;
+      }
+  
+      .more-description{
+        transition: height 1s linear 0.2s;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        border: 1px solid rgb(236, 231, 231);
+        height: 50vh;
+        overflow: hidden;
     
-  }
-  .tooltip-box{
-    transition: visibility 0.5s ease-in-out 0.2s;
-    background-color: #f5f5f7;
-    top: 30px;
-    left: -40px;
-    visibility: hidden;
-    position: absolute;
-    padding: 10px;
-    display: flex;
+        .child-l-30{
+          width: 20%;
+          color: #8f9399;
+          padding: 10px 20px;
+        }
+    
+        .child-l-70{
+          width: 80%;
+          padding: 10px 20px;
+        }
+
+        & div{
+          & div{
+            gap: 1rem;
+          }
+        }
+      }
+    }
+
+}
+  
+  
+// for mobile view
+
+@media screen and (max-width: 321px) {
+  .detail-card{
     flex-direction: column;
-    width: 250px;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px 3px grey,-2px -2px 5px 3px grey;
+    width: 95%;
+
+    .image-section{
+      width: 100%;
+    }
+
+    .description-section{
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem;
+    }
   }
   
-  .more-description{
-    transition: height 1s linear 0.2s;
-    display: flex;
+}
+
+// for large mobile view
+@media screen and (max-width: 426px) {
+  .detail-card{
     flex-direction: column;
-    font-size: 14px;
-    border: 1px solid rgb(236, 231, 231);
-    height: 50vh;
-    overflow: hidden;
+    height: auto;
+
+    .image-section{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .description-section{
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem;
+    }
   }
-  .more-description .child-l-30{
-    width: 20%;
-    color: #8f9399;
-    padding: 10px 20px;
-  }
-  .more-description .child-l-70{
-    width: 80%;
-    padding: 10px 20px;
-  }
-  
-  .image{
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-size: cover; 
 }
