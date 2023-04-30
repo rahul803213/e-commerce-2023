@@ -119,7 +119,7 @@ componentWillUnmount(){
         <Route exact path="/contact" element={<Contact/>}/>
         <Route exact path='/payment'  element={<PaymentPage />} />
       </Routes>
-      
+        
       <Footer/>
       </div>
       

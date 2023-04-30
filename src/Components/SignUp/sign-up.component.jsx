@@ -99,10 +99,10 @@ render(){
     return(
         <div className="sign-up">
             <div>
-                <h2>DON'T HAVE  AN ACCOUNT</h2> 
+                <h2>Don't have an account ?</h2> 
             </div>
             <div>
-                <span>Sign Up With Email And Password</span> 
+                <span>Create an account</span> 
             </div>
         <form onSubmit={this.handelSubmit}>
 

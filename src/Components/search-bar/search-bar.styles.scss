@@ -1,12 +1,22 @@
 .search-bar{
+    width:100%;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
-    border-bottom-style: groove;
-   // background-color: #eee;
-    margin-right: 10px;
-    height: 40px;
-    width:50%;
+    border-bottom-style: inset;
+    padding: 0.8rem 0.5rem;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    background-color: inherit;
+
+    &:focus{
+        border-bottom-style: groove;
+        box-shadow: 0 2px 3px 1px rgb(150, 155, 150);
+    }
+
+    // margin-right: 10px;
+    // height: 40px;
    // position:absolute;
    // display: flex;
 
@@ -15,19 +25,16 @@
 }
 .search-card{
     position: absolute;
-    width: 40%;
-   
-   
+    width: 60%;
     max-height: 340px;
     display: flex;
-   
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid black;
     background-color: white;
-    top: 80px;
-    right: 290px;
-    z-index: 5;
+    top: 5rem;
+    left: 6rem;
+    z-index: 2;
     overflow: scroll;
 }
 
@@ -40,12 +47,14 @@
     .search-image{
         padding:10px;
     }
+
     flex-direction: row;
     display: flex;
-    font-size: 20px;
+    font-size: 1.2rem;
     align-items: center;
     justify-content: space-between;
-    align-content: space-around;
+    padding: 0 0.8rem;
+    // align-content: space-around;
   //  border-bottom: 1px solid black;
   //  overflow: scroll;
    }

@@ -24,9 +24,9 @@ const footer = () =>  (
 
       <div className="column">
         <h5>Connect with Us</h5>
-        <span><Link to='/' className='Link'>Twitter</Link></span>
-        <span><Link to='/' className='Link'>Facebook</Link></span>
-        <span><Link to='/' className='Link'>Instagram</Link></span>
+        <span><Link to='https://twitter.com/' className='Link'>Twitter</Link></span>
+        <span><Link to='https://www.facebook.com/' className='Link'>Facebook</Link></span>
+        <span><Link to='https://www.instagram.com/' className='Link'>Instagram</Link></span>
         <span></span>
       </div>
 
