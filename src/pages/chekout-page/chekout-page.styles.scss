@@ -37,4 +37,28 @@
       font-size: 36px;
     }
   }
+
+.emptyCart{
+  width: 100%;
+  text-align: center;
+
+
+  img{
+    width: 100%;
+
+    @media screen and (min-width: 768px){
+      width: 50%;
+    }
+  }
+
+  .button{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (min-width: 768px){
+      width: 40% !important;
+    }
+  }
+}  
   

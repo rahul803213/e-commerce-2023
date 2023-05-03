@@ -33,10 +33,12 @@ const CheckOutPage = ({cartItems,total}) =>{
 {/*        <StripeCheckoutButton price={total}></StripeCheckoutButton> */}
      <CustomButton yellow onClick={()=>navigate('/payment')}>Proceed To Payment</CustomButton>
       </div>  
-        : <div> <img src={blankcart} alt="empty-cart"  />
-        <Link to="/shop">
-          <CustomButton  >Back To Shop</CustomButton>
-          </Link>
+        : 
+        <div className="emptyCart"> 
+            <img src={blankcart} alt="empty-cart"  />
+            <Link to="/shop" className="button">
+                <CustomButton  >Back To Shop</CustomButton>
+            </Link>
         </div>
     }
    
