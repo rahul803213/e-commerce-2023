@@ -55,13 +55,13 @@ handlechange = event =>{
       //  console.log(this.state);
         return(
             <div className="sign-in">
-                <div>
-                    <h2> ALREADY HAVE AN ACCOUNT</h2>
+                <div >
+                    <h2> Welcome Back</h2>
                 </div>
-                <div>
-                    <span>Sign In With Your Email And Password</span>
+                <div >
+                    <span>Please enter your details to sign in.</span>
                 </div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} style={{width: '100%'}}>
                     <FormInput 
                     type="email" 
                     name="email" 
@@ -79,14 +79,18 @@ handlechange = event =>{
                     required />
                     
                     <div className="sign-in-buttons">
-                        <div style={{width:'70%',margin:'0 auto'}}>
+                        <div className="button">
                             <CustomButton type="submit">sign in </CustomButton>
                         </div>
                         
-                        <div style={{}} className="signInOptions">
-                            <span>Sign In with </span>
-                            <FcGoogle onClick={signInWithGoogle} className='hoverIcons'/> 
-                            <FaFacebook onClick={signInWithFacebook} className='hoverIcons'/> 
+                        <div className="signInOptions">
+                            <div className="line"></div>
+                            <div className="signInIcons">
+                                <CustomButton onClick={signInWithGoogle} className="button-1"><FcGoogle/> <span>Goggle</span></CustomButton>
+                                <CustomButton onClick={signInWithFacebook} className="button-1"><FaFacebook/> <span>facebook</span></CustomButton>
+                                {/* <FcGoogle onClick={signInWithGoogle} className='hoverIcons'/> 
+                                <FaFacebook onClick={signInWithFacebook} className='hoverIcons'/>  */}
+                            </div>
                         </div>
 
                     </div>

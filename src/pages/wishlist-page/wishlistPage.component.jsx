@@ -17,29 +17,26 @@ const WishlistPage = ({WishlistItems}) => {
     return(
         <div className="wishlist-page">
           
-         { WishlistItems.length ?
-            <div>    
-                <div className="wishlist-header">
-                    <div className="header-block">Product</div>
-                    <div className="header-block">Description</div>
-                    <div className="header-block price">Price</div>
-                    <div className="header-block">Add To Cart</div>
-                    <div className="header-block">Remove</div>
+            { WishlistItems.length ?
+                <div className="have-content">    
+                    {/* <div className="wishlist-header">
+                        <div className="header-block">Product</div>
+                        <div className="header-block">Description</div>
+                        <div className="header-block price">Price</div>
+                        <div className="header-block">Add To Cart</div>
+                        <div className="header-block">Remove</div>
+                    </div> */}
+                    { WishlistItems.map(wishlistitem => <WishlistItem key={wishlistitem.id}   wishlistitem={wishlistitem} />)}
                 </div>
-        { WishlistItems.map(wishlistitem => 
-    
-        <WishlistItem key={wishlistitem.id}   wishlistitem={wishlistitem} />)}
-        </div>
-        :
-        <div>
-            <img src={blankwish} alt="empty-wishlist" />
-            <Link to="/shop">
-                <CustomButton >Back To Shop</CustomButton>
-            </Link>
-        </div>
-    
-        }
-        </div>
+                :
+                <div className="empty-page">
+                    <img src={blankwish} alt="empty-wishlist" />
+                    <Link to="/shop" className="link">
+                        <CustomButton >Back To Shop</CustomButton>
+                    </Link>
+                </div>
+            }   
+    </div>
     )
 }
 const MapStateToProps = createStructuredSelector({
